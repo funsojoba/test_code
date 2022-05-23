@@ -1,6 +1,6 @@
 import SideBar from '../../components/sideBar/'
 
-import { Container, Content, CardBox, CardWrapper, CardName, CloseBtn, EditBtn } from './style'
+import { Container, Content, CardBox, CardWrapper, CardName, CloseBtn, EditBtn, FormContent } from './style'
 import DashNav from '../../components/dashNav'
 import Modal from '../../components/modal/'
 import Button from '../../components/button'
@@ -8,9 +8,14 @@ import H5 from '../../components/typography/h5'
 import Small from '../../components/typography/small'
 import { Formik } from "formik";
 // GoPlus
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaTimes } from "react-icons/fa";
 import { GoPlus } from "react-icons/go";
 import validate from "./validate";
+import Label from "../../components/typography/label";
+import ErrorMsg from "../../components/typography/errorMsg";
+import Input from "../../components/input";
+
+import {Link} from 'react-router-dom'
 
 
 import { connect } from 'react-redux'
@@ -37,6 +42,11 @@ const Dashboard = () => {
         10:'Oct.',
         11:'Nov.',
         12:'Dec.'
+    }
+
+    const employee = {
+        name:"James",
+        id:1
     }
 
     const [modalState, setmodalState] = useState(false)
@@ -75,7 +85,65 @@ const Dashboard = () => {
             >
                 {({ handleSubmit, handleBlur, handleChange, values, errors, touched }) => (
                     <form onSubmit={handleSubmit}>
-                        
+                        <FormContent>
+                            <Label>First Name</Label>
+                            <Input
+                                value={values.first_name}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                type="text"
+                                name="first_name"
+                                placeholder="John"
+                                width="100%" />
+                            {/* <ErrorMsg>{touched.income_date && errors.income_date ? errors.income_date : null}</ErrorMsg> */}
+                        </FormContent>
+                        <FormContent>
+                            <Label>Last Name</Label>
+                            <Input
+                                value={values.last_name}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                type="text"
+                                name="last_name"
+                                placeholder="Doe"
+                                width="100%" />
+                            {/* <ErrorMsg>{touched.income_date && errors.income_date ? errors.income_date : null}</ErrorMsg> */}
+                        </FormContent>
+                        <FormContent>
+                            <Label>Date of Birth</Label>
+                            <Input
+                                value={values.date_of_birth}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                type="date"
+                                name="date_of_birth"
+                                width="100%" />
+                            {/* <ErrorMsg>{touched.income_date && errors.income_date ? errors.income_date : null}</ErrorMsg> */}
+                        </FormContent>
+                        <FormContent>
+                            <Label>Resume</Label>
+                            <Input
+                                value={values.resume}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                type="file"
+                                name="resume"
+                                accept=".doc,.docx,.txt,.pdf"
+                                width="100%" />
+                            {/* <ErrorMsg>{touched.income_date && errors.income_date ? errors.income_date : null}</ErrorMsg> */}
+                        </FormContent>
+                        <FormContent>
+                            <Label>Profile Picture</Label>
+                            <Input
+                                value={values.profile_picture}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                type="file"
+                                name="profile_picture"
+                                accept="image/png, image/jpeg"
+                                width="100%" />
+                            {/* <ErrorMsg>{touched.income_date && errors.income_date ? errors.income_date : null}</ErrorMsg> */}
+                        </FormContent>
                         <Button width="100%" type="submit" >Submit</Button>
                     </form>
                 )}
@@ -88,8 +156,8 @@ const Dashboard = () => {
 
             <CardWrapper>
                 <CardBox background="https://res.cloudinary.com/ddl2pf4qh/image/upload/v1628520968/contact_api/nzmenvrlvbh923cxitkg.jpg">
-                    <EditBtn><FaEdit /></EditBtn>
-                    <CloseBtn>X</CloseBtn>
+                    <EditBtn> <Link to={`/dashboard/${employee.id}`} ><FaEdit /></Link> </EditBtn> 
+                    <CloseBtn> <FaTimes/> </CloseBtn>
                     <CardName>
                         <H5 color="#fff" align="left">David Kingston</H5>
                         <Small color="#00D1FF">Software Engineer </Small>

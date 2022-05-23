@@ -112,3 +112,9 @@ export const EditBtn = styled.div`
     align-items:center;
     cursor:pointer;
 `
+
+
+export const FormContent = styled.div`
+    padding:15px;
+    margin-bottom: 7.5px;;
+`

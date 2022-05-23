@@ -5,7 +5,9 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Input = (props)=>{
     const [toggleEye, setToggleEye] = useState(false)
-    const {onChange, type, name, value, placeholder, onBlur, width, mb, readOnly, id, min, max, password} = props
+    const {onChange, type, name, value, 
+        placeholder, onBlur, width, mb, 
+        readOnly, id, min, max, password, accept} = props
     
     const changeToggle = ()=>{
         setToggleEye(!toggleEye)
@@ -24,6 +26,7 @@ const Input = (props)=>{
                     max={max}
                     readOnly={readOnly}
                     id={id}
+                    accept={accept}
                     >
                     </InputDiv>
     

@@ -2,6 +2,7 @@ import './App.css';
 import LogIn from './pages/login'
 import Register from "./pages/register"
 import Dashboard from "./pages/dashboard"
+import Detail from "./pages/dashboard/detail/index"
 import { Provider } from 'react-redux'
 import ProtectedRoute from "./protectedRoute"
 import { PersistGate } from 'redux-persist/integration/react';
@@ -24,6 +25,7 @@ function App() {
           <Route path='/' element={<LogIn/>} />
           <Route path='/register' element={<Register/>} />
           <Route path='/dashboard' element={<Dashboard/>} />
+          <Route path='/dashboard/:id' element={<Detail/>} />
           {/* <ProtectedRoute path="/dashboard" exact element={<Dashboard/>} /> */}
         </Routes>
 

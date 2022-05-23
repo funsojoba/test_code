@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 const H5Div = styled.h5`
-    font-weight: normal;
+    font-weight: ${props => props.weight ? props.weight : 'normal'};
     font-size:1.5em;
     margin:0;
     color: ${props => props.color ? props.color : "#1C246D"};
